@@ -12,42 +12,47 @@ function validatef() {
     var regPhone=/^\d{10}$/;                                       
     var regName = /^[a-zA-Z ]+$/; 
     var regpass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
-    var f1=0,f2=0,f3=0,f4=0;
-    if (name == "" || !regName.test(name)) {
+    var f1=0,f2=0,f3=0,f4=0,f5=0;
+    if (name == "" ||name==" "|| !regName.test(name)) {
         document.getElementById("Name").style.border= "2px solid rgb(138,0,0)";
         document.getElementById("nameerror").style.display="block";
         f1=1;
     }
                  
-    if (email == "" || !regEmail.test(email)) {
+    if (email == ""||email == " " || !regEmail.test(email)) {
         document.getElementById("EMail").style.border= "2px solid rgb(138,0,0)";
         document.getElementById("emailerror").style.display="block";
         f2=1;
     }
-                  
-     
+    if (password1 == " " || !regpass.test(password1) ) {
+        document.getElementById("Password1").style.border= "2px solid rgb(138,0,0)";
+        document.getElementById("pass1error").style.display="block";
+        f3=1;
+        
+        
+    }
  
      if(password1!=password2){
         document.getElementById("Password2").style.border= "2px solid rgb(138,0,0)";
-        f3=1;
         document.getElementById("pass2error").style.display="block";
-    }
+        f5=1;
+        
+    }        
+ 
      if (MobileNumber == "" || !regPhone.test(MobileNumber)) {
-        // console.log(MobileNumber);
-        f4=1;
+        
         document.getElementById("MobileNumber").style.border= "2px solid rgb(138,0,0)";
         document.getElementById("moberror").style.display="block";
+        f4=1; 
     }
-    //  if(!document.forms.regform.Gender.value){
-    //     document.getElementById("generror").style.display="block";
-    //     error=true;
-    // }
-    if(f1==0 && f2==0 && f3==0 && f4==0){
-    // alert("Form Submitted Succesfully");
-    console.log("Name-"+name);    
+    if(f1==0 && f2==0 && f3==0 && f4==0&& f5==0){
+        console.log("Name-"+ name +"EMail-"+ email +"MobileNumber-" +MobileNumber +"Password2"+ password2);    
+        alert("Form Submitted Succesfully");
+    }
     return true;
-    }
-    else{
-        return false;
-    }
+    
+
 }
+    window.addEventListener('submit', (e) => {
+        e.preventDefault();
+    });
